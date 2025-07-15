@@ -5,6 +5,8 @@ using UnityEngine;
 public class Cannon : MonoBehaviour
 {
     public GameObject cannonballPrefab;
+    public float cannonballMoveDuration;
+    public Color cannonballColour;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,13 @@ public class Cannon : MonoBehaviour
         bool leftClick = Input.GetMouseButtonDown(0);
         if (leftClick)
         {
-            Instantiate(cannonballPrefab, transform.position, Quaternion.identity);
+           GameObject spawnedCannonball = Instantiate(cannonballPrefab, transform.position, Quaternion.identity);
+            Debug.Log(spawnedCannonball.name);
+            SpriteRenderer cannonballRenderer = spawnedCannonball.GetComponent<SpriteRenderer>();
+            cannonballRenderer.color = cannonballColour;
+
+            Cannonball cannonballScript = spawnedCannonball.GetComponent <Cannonball>();
+            cannonballScript.moveDuration = cannonballMoveDuration;
         }
     }
 }

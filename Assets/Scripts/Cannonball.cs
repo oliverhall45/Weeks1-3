@@ -30,6 +30,7 @@ public class Cannonball : MonoBehaviour
     {
         timePassed += Time.deltaTime / moveDuration;
 
+        //Vector3.Lerp(start, end, time);
         Vector3 output = Vector3.Lerp(startPosition, endPosition, timePassed);
         transform.position = output;
 
